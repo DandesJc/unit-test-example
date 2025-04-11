@@ -1,3 +1,7 @@
+const bienvenida = (nombre) => {
+    return `Hola ${nombre}, bien venido acá`
+} 
+
 const tiMonth = (ipc) => {
     const ti = (((1+(((ipc)/100)))**(1/12))-1)
     console.log(ti)
@@ -128,6 +132,7 @@ const litersRequired = async (hydrogen_mass) => {
     return result
 }
 
+
 module.exports = {
     fuelEnergySelector,
     electricalConsumption,
@@ -150,5 +155,6 @@ module.exports = {
     energyH2LowPresure,
     energyConsumed,
     hydrogenMass,
-    litersRequired
+    litersRequired,
+    bienvenida
 }

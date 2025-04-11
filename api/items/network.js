@@ -2,9 +2,20 @@ const { Router } = require('express');
 const response = require('../../network/response')
 const router = Router();
 const ctrl = require('./index');
-const {tiMonth} = require('../../calculators/environment')
+const {tiMonth, bienvenida} = require('../../calculators/environment')
 
 const tableInjected = 'my_table'
+
+
+router.get('/bienvenida/:nombre', async (req, res) => {
+    try {
+        const nombre = req.params.nombre
+        bienvenida(nombre)
+        response.success(req, res, nombre, 200);    
+    } catch (error) {
+        response.error(req, res, error.message, 500); 
+    }
+})
 
 router.get('/list', async (req, res) => {
     try {
