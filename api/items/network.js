@@ -2,7 +2,7 @@ const { Router } = require('express');
 const response = require('../../network/response')
 const router = Router();
 const ctrl = require('./index');
-const {tiMonth, bienvenida} = require('../../calculators/environment')
+const {tiMonth, bienvenida, fuelEnergySelector} = require('../../calculators/environment')
 
 const tableInjected = 'my_table'
 
@@ -35,6 +35,21 @@ router.get('/list2', async (req, res) => {
         response.error(req, res, error.message, 500); 
     }
 })
+
+
+router.get('/env_test/:fuel', async (req, res) => {
+    try {
+        const fuel = req.params.fuel
+        const list = {
+            "month_inflation": tiMonth(1.4),
+            "fuel_select": fuelEnergySelector(fuel)
+        }
+        response.success(req, res, list, 200);    
+    } catch (error) {
+        response.error(req, res, error.message, 500); 
+    }
+})
+
 
 
 router.get('/:id', async (req, res) => {

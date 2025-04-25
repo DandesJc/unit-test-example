@@ -8,19 +8,19 @@ const tiMonth = (ipc) => {
     return ti
 } 
 
-const fuelEnergySelector = async (data, scraping) => {
+const fuelEnergySelector = (data) => {
     let fuel_info = {}
     if (data === 'diesel' || data == 'Diesel') {
-        fuel_info['fuel_price'] = scraping['diesel_price']
-        fuel_info['fuel_energy'] = ('diesel_energy')
-        fuel_info['emision_factor'] = ('emision_factor_diesel')
+        fuel_info['fuel_price'] = 123
+        fuel_info['fuel_energy'] = 321
+        fuel_info['emision_factor'] = 213
         return fuel_info
     }
     else {
-        fuel_info['fuel_price'] = scraping['fuel_price']
+        fuel_info['fuel_price'] = ('fuel_price')
         fuel_info['fuel_energy'] = ('gasoline_energy')
         fuel_info['emision_factor'] = ('emision_factor_gasoline')
-        return fuel_info
+        return fuel_info = {}
     }
 }
 
