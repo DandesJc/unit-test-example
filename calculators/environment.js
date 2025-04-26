@@ -10,24 +10,32 @@ const tiMonth = (ipc) => {
 
 const fuelEnergySelector = (data) => {
     let fuel_info = {}
-    if (data === 'diesel' || data == 'Diesel') {
-        fuel_info['fuel_price'] = 123
-        fuel_info['fuel_energy'] = 321
-        fuel_info['emision_factor'] = 213
-        return fuel_info
-    }
-    else {
-        fuel_info['fuel_price'] = ('fuel_price')
-        fuel_info['fuel_energy'] = ('gasoline_energy')
-        fuel_info['emision_factor'] = ('emision_factor_gasoline')
-        return fuel_info = {}
+    switch(data) {
+        case "diesel" || "Diesel":
+            fuel_info['fuel_price'] = 123
+            fuel_info['fuel_energy'] = 321
+            fuel_info['emision_factor'] = 213
+            return fuel_info
+        
+    
+        case "gasoline" || "Gasoline":
+            fuel_info['fuel_price'] = 123
+            fuel_info['fuel_energy'] = 321
+            fuel_info['emision_factor'] = 213
+            return fuel_info
+        
+        default:
+            return {
+                "error": "Tipo de combustible no válido",
+                "error_code": 500
+            }
     }
 }
 
 //  kWh/km
-const electricalConsumption = async (nominal_energy, autonomy_nominal) => {
+const electricalConsumption = (nominal_energy, autonomy_nominal) => {
 
-    const electrical_consumption = (nominal_energy/(autonomy_nominal*('autonomy_factor')))
+    const electrical_consumption = (nominal_energy/(autonomy_nominal*(0.9)))
     return electrical_consumption
 }
 
@@ -38,8 +46,8 @@ const costElectricalKM = (electrical_consumption, energy_price) => {
     return cost_electrical_km
 }
 
-const combustionConsumption = async (electrical_consumption) => {
-    const combustion_consumption = (electrical_consumption / ('combustion_engine_efficiency') )
+const combustionConsumption = (electrical_consumption) => {
+    const combustion_consumption = (electrical_consumption / (0.27) )
 
     return combustion_consumption
 }

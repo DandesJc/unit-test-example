@@ -3,20 +3,27 @@ const assert = require('node:assert');
 const {tiMonth, fuelEnergySelector} = require("../calculators/environment");
 
 
-// test('env_ipc', () => { 
-//     assert.strictEqual(tiMonth(1.4), 5)
-// })
+test('env_ipc', () => { 
+    assert.strictEqual(tiMonth(1.4), 5)
+})
 
 describe("", () => {
-    // it("Test colection 1", () => {
-    //     assert.strictEqual(fuelEnergySelector(), 5)
-    // })
 
-    it("Test Object Empty", () => {
-        assert.notEqual(fuelEnergySelector("Diesel"), 0)
+    it("Gasoline case", () => {
+        assert.deepStrictEqual(fuelEnergySelector("gasoline"), {
+            "fuel_price": 16700,
+            "fuel_energy": 35.58,
+            "emision_factor": 69.25
+        })
     })
 
-    // it("Test colection 3", () => {
-    //     assert.strictEqual(fuelEnergySelector(), 5)
-    // })
+    it("Diesel case", () => {
+        assert.deepStrictEqual(fuelEnergySelector("gasoline"), {
+            "fuel_price": 11795,
+            "fuel_energy": 40.7,
+            "emision_factor": 74.01
+        })
+    })
+
+
 })
