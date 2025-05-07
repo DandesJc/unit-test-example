@@ -1,5 +1,5 @@
 const bienvenida = (nombre) => {
-    return `Hola ${nombre}, bien venido acá`
+    return `Hol ${nombre}, bienvenido acá`
 } 
 
 const tiMonth = (ipc) => {
@@ -10,15 +10,18 @@ const tiMonth = (ipc) => {
 
 const fuelEnergySelector = (data) => {
     let fuel_info = {}
+    console.log(data)
     switch(data) {
-        case "diesel" || "Diesel":
-            fuel_info['fuel_price'] = 123
-            fuel_info['fuel_energy'] = 321
-            fuel_info['emision_factor'] = 213
+        case "diesel":
+        case "Diesel":
+            fuel_info['fuel_price'] = 333
+            fuel_info['fuel_energy'] = 222
+            fuel_info['emision_factor'] = 111
             return fuel_info
         
     
-        case "gasoline" || "Gasoline":
+        case "gasoline":
+        case "Gasoline":
             fuel_info['fuel_price'] = 123
             fuel_info['fuel_energy'] = 321
             fuel_info['emision_factor'] = 213
@@ -66,8 +69,8 @@ const fuelEfficiency = (fuel_consumption) => {
 }
 
 const fuelCostKm = (fuel_price, fuel_consumption) => {
-    const fuel_cost_km = (fuel_price['fuel_price']*fuel_consumption)
-    
+    const fuel_cost_km = (fuel_price*fuel_consumption)
+    console.log(fuel_cost_km)
     return fuel_cost_km
 }
 
